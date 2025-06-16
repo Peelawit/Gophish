@@ -74,17 +74,6 @@ export default function PasswordPage({ email, onBack, onSubmit }) {
           </div>
         </form>
       </div>
-      
-      {/* <div className="mt-6 bg-white shadow-2xl">
-        <button className="flex items-center justify-start w-full p-[12px] border cursor-pointer border-gray-300 text-sm text-gray-900 hover:bg-gray-200">
-          <div className='pl-8'>
-            <KeyRound strokeWidth={1.3} className="transform scale-x-[-1]" />
-          </div>
-          <div className='pl-4'>
-            Sign-in options
-          </div>
-        </button>
-      </div> */}
     </div>
   );
 } 
