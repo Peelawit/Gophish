@@ -15,8 +15,6 @@ export default function EmailPage({ onNext }) {
       return;
     }
 
-    // Here you would normally validate the email
-    // For demo purposes we'll just proceed
     onNext(email);
   };
 
