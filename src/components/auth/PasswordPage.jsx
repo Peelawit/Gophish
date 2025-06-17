@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 import MicrosoftLogo from './MicrosoftLogo';
-import { KeyRound } from 'lucide-react';
+import { KeyRound, Loader2 } from 'lucide-react';
 
-export default function PasswordPage({ email, onBack, onSubmit }) {
+export default function PasswordPage({ email, onBack, onSubmit, isLoading = false }) {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
@@ -28,7 +28,8 @@ export default function PasswordPage({ email, onBack, onSubmit }) {
         <div className="flex items-center mt-6 mb-4">
           <button 
             onClick={onBack}
-            className="text-gray-500 mr-3 cursor-pointer hover:rounded-full hover:bg-gray-300 p-1 "
+            disabled={isLoading}
+            className="text-gray-500 mr-3 cursor-pointer hover:rounded-full hover:bg-gray-300 p-1 disabled:opacity-50 disabled:cursor-not-allowed"
             aria-label="Go back"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -48,7 +49,8 @@ export default function PasswordPage({ email, onBack, onSubmit }) {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
-              className="w-full pt-2 pb-2 text-sm text-gray-800 border-b-2 border-gray-300 focus:border-ms-blue focus:outline-none"
+              disabled={isLoading}
+              className="w-full pt-2 pb-2 text-sm text-gray-800 border-b-2 border-gray-300 focus:border-ms-blue focus:outline-none disabled:opacity-50"
               aria-label="Password"
             />
           </div>
@@ -61,15 +63,18 @@ export default function PasswordPage({ email, onBack, onSubmit }) {
             <button
               type="button"
               onClick={onBack}
-              className="px-10 py-1 text-md bg-gray-200 cursor-pointer text-black  hover:bg-gray-300"
+              disabled={isLoading}
+              className="px-10 py-1 text-md bg-gray-200 cursor-pointer text-black hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
             >
                 Back
             </button>
             <button
               type="submit"
-              className="px-8 py-1 bg-[#0067b8] text-white cursor-pointer hover:bg-[#0067b8]"
+              disabled={isLoading}
+              className="px-8 py-1 bg-[#0067b8] text-white cursor-pointer hover:bg-[#0067b8] disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
             >
-              Sign in
+              {isLoading && <Loader2 className="w-4 h-4 animate-spin" />}
+              {isLoading ? 'Signing in...' : 'Sign in'}
             </button>
           </div>
         </form>

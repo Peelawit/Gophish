@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "node test-gophish.js"
   },
   "dependencies": {
     "framer-motion": "^12.11.0",
@@ -19,5 +20,13 @@
     "@tailwindcss/postcss": "^4.1.6",
     "autoprefixer": "^10.4.21",
     "tailwindcss": "^4"
-  }
+  },
+  "keywords": [
+    "gophish",
+    "phishing",
+    "security",
+    "testing",
+    "authentication"
+  ],
+  "description": "A test authentication application for Gophish phishing framework integration"
 }
